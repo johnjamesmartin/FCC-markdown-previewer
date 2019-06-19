@@ -1,0 +1,77 @@
+$guidelines: 1px dotted #000;
+$col-darkest: #000;
+$col-lightest: #fff;
+$col-medium: #d8dee0;
+$col-grad-1: desaturate(#0575e6, 20%);
+$col-grad-2: desaturate(#00f260, 20%);
+$col-window-taskbar: $col-medium;
+$col-window-theme-bkg: $col-lightest;
+$col-window-theme-color: $col-darkest;
+
+@mixin center-align() {
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  right: 0;
+}
+
+@mixin footer() {
+  font-size: 6px;
+  letter-spacing: 1.5px;
+  opacity: 0.7;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@mixin subtle-box-shadow() {
+  box-shadow: 2px 2px 5px #0000003b;
+}
+
+@mixin subtle-text-shadow() {
+  text-shadow: 1px 1px 1px #0000000f;
+}
+
+@mixin taskbar-curves() {
+  border-radius: 5px 5px 0 0;
+}
+
+@mixin window-theme($bkg, $col) {
+  background-color: $bkg;
+  color: $col;
+}
+
+body {
+  background: $col-grad-2;
+  background: -webkit-linear-gradient(to right, $col-grad-1, $col-grad-2);
+  background: linear-gradient(to right, $col-grad-1, $col-grad-2);
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  min-width: 365px;
+}
+
+.container {
+  border: $guidelines;
+  height: 100vh;
+}
+
+.app-title {
+  @include subtle-text-shadow();
+  border: $guidelines;
+  color: $col-lightest;
+  height: 20vh;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.elem-footer {
+  @include center-align();
+  @include footer();
+  border: $guidelines;
+  bottom: 0 !important;
+  height: 10vh;
+  padding-top: 20px;
+  position: fixed;
+  width: 300px;
+}
