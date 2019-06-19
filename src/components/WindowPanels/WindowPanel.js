@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Preview from '../common/common';
 
-class WindowPanel extends React.Component {
+class WindowPanel extends Component {
   render() {
     let windowBodyContent;
     if (this.props.title === 'Editor') {

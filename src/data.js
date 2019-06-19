@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
-import marked from 'marked';
-
-const renderer = new marked.Renderer();
 const codeblock = '```npm install -g marked```';
-const editorSample = `# Header
+const defaultEditorContent = `# Header
 ## Sub header
 
 [Hyperlink](https://github.com/markedjs/marked)
@@ -33,18 +29,4 @@ function describeMarkdown(adjective) {
 
 ![alt text](https://i.imgur.com/QzRb2ow.png "Markdown logo")`;
 
-marked.setOptions({ breaks: true });
-
-const Preview = props => {
-  return (
-    <div
-      className="elem-preview-markup"
-      dangerouslySetInnerHTML={{
-        __html: marked(props.markdown, { renderer: renderer })
-      }}
-      id="preview"
-    />
-  );
-};
-
-export default Preview;
+export default defaultEditorContent;

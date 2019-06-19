@@ -1,4 +1,4 @@
-$guidelines: 0px dotted #000;
+$guidelines: 0 dotted #000;
 $col-darkest: #000;
 $col-lightest: #fff;
 $col-medium: #d8dee0;
@@ -24,11 +24,11 @@ $col-window-theme-color: $col-darkest;
 }
 
 @mixin subtle-box-shadow() {
-  box-shadow: 2px 2px 5px #0000003b;
+  box-shadow: 2px 2px 5px #00000031;
 }
 
 @mixin subtle-text-shadow() {
-  text-shadow: 1px 1px 1px #0000000f;
+  text-shadow: 1px 1px 1px #00000038;
 }
 
 @mixin taskbar-curves() {
@@ -65,7 +65,7 @@ html {
   @include subtle-text-shadow();
   border: $guidelines;
   color: $col-lightest;
-  height: 100px;
+  height: 110px;
   padding-top: 50px;
   text-align: center;
 }
