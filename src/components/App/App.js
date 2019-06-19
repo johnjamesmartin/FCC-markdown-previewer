@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import './App.scss';
 import AppTitle from '../AppTitle/AppTitle';
+import WindowPanels from '../WindowPanels/WindowPanels';
 import Footer from '../Footer/Footer';
 import BootstrapCSSOnly from 'bootstrap-css-only';
 import marked from 'marked';
@@ -42,11 +43,46 @@ function describeMarkdown(adjective) {
 
 marked.setOptions({ breaks: true });
 
+const Preview = props => {
+  return (
+    <div
+      className="elem-preview-markup"
+      dangerouslySetInnerHTML={{
+        __html: marked(props.markdown, { renderer: renderer })
+      }}
+      id="preview"
+    />
+  );
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { markdown: editorSample };
+    this.state = { markdown: editorSample, windowBodyContent: null };
     this.handleChange = this.handleChange.bind(this);
+    this.updateEditor = this.updateEditor.bind(this);
+  }
+  componentDidMount() {
+    console.log(this.state.markdown);
+  }
+  updateEditor(title) {
+    let windowBodyContent;
+    if (title === 'Editor') {
+      this.setState({
+        windowBodyContent: (
+          <textarea
+            className="elem-window-textarea"
+            id="editor"
+            onChange={this.handleChange}
+            value={this.state.markdown}
+          />
+        )
+      });
+    } else {
+      this.setState({
+        windowBodyContent: Preview({ markdown: this.state.markdown })
+      });
+    }
   }
   handleChange(e) {
     this.setState({ markdown: e.target.value });
@@ -55,6 +91,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <AppTitle />
+        <WindowPanels
+          updateEditor={this.updateEditor}
+          windowBodyContent={this.state.windowBodyContent}
+          markdown={this.state.markdown}
+          onChange={this.handleChange}
+        />
         <Footer />
       </React.Fragment>
     );

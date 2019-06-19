@@ -1,4 +1,4 @@
-$guidelines: 1px dotted #000;
+$guidelines: 0px dotted #000;
 $col-darkest: #000;
 $col-lightest: #fff;
 $col-medium: #d8dee0;
@@ -52,18 +52,20 @@ body {
 
 html {
   min-width: 365px;
+  height: 100%;
 }
 
 .container {
   border: $guidelines;
   height: 100vh;
+  min-height: 600px;
 }
 
 .app-title {
   @include subtle-text-shadow();
   border: $guidelines;
   color: $col-lightest;
-  height: 20vh;
+  height: 100px;
   padding-top: 50px;
   text-align: center;
 }
@@ -77,4 +79,76 @@ footer {
   padding-top: 20px;
   position: fixed;
   width: 300px;
+}
+
+.elem-div-window {
+  border: $guidelines;
+  margin-bottom: 1px;
+  float: left;
+  height: 35vh;
+}
+
+.elem-h1-title {
+  font-size: 30px;
+  font-weight: 300;
+  margin-top: 10px;
+  line-height: 30px;
+}
+
+.elem-preview-markup {
+  margin-top: -10px;
+  transform: scale(0.92) !important;
+}
+
+.elem-window-panel {
+  @include subtle-box-shadow;
+  @include taskbar-curves();
+  @include window-theme($col-window-theme-bkg, $col-window-theme-color);
+  height: 100%;
+}
+
+.elem-window-taskbar {
+  @include taskbar-curves();
+  background-color: $col-window-taskbar;
+  border: 1px solid $col-window-taskbar;
+  color: darken($col-window-taskbar, 60%);
+  height: 13%;
+  min-height: 30px;
+  max-height: 35px;
+  padding: 2px 7px 2px 7px;
+}
+
+.elem-window-body {
+  @include window-theme($col-window-theme-bkg, $col-window-theme-color);
+  border: 1px solid $col-window-taskbar;
+  height: 87%;
+  padding: 7px 7px 2px 7px;
+  overflow: scroll;
+}
+
+.elem-window-textarea {
+  @include window-theme($col-window-theme-bkg, $col-window-theme-color);
+  border: 0;
+  height: 99%;
+  outline: none;
+  resize: none;
+  width: 100%;
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 768px) {
+  .elem-div-window {
+    height: 70vh;
+  }
+  .elem-h1-title {
+    font-size: 35px;
+  }
+
+  .elem-window-taskbar {
+    height: 6%;
+  }
+
+  .elem-window-body {
+    height: 93%;
+  }
 }
